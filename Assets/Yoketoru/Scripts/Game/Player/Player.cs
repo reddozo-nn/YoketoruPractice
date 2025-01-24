@@ -1,3 +1,4 @@
+using System.Collections.Specialized;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -72,6 +73,10 @@ public class Player : MonoBehaviour, IGameStateListener
 
             case State.Reset:
                 Debug.Log($"座標と向きを、Awakeで記録したものに戻す");
+                transform.Find("Pivot").eulerAngles
+                    = new Vector3(0, 0, 0);
+                transform.Translate(new Vector3(0, 0, 0));
+                transform.position = new Vector3(0, 0, 0);
                 break;
         }
     }
