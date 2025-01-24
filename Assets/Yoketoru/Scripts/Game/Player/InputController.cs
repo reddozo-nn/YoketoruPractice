@@ -25,10 +25,9 @@ public class InputController
     ///</summary>
     public void Update()
     {
-        for(int i = 0; IInput[i]!='\0';i++)
+        for(int i = 0; i<inputs.Length;i++)
         {
             inputs[i].Update();
-            IInput[i].Update();
         }
     }
 
@@ -38,6 +37,16 @@ public class InputController
     ///<returns>移動を指示するVector2の値</returns>
     public Vector2 GetValue()
     {
-        return Vector2.zero;
+        Vector2 value = Vector2.zero;
+
+        for(int i=0; i<inputs.Length;i++)
+        {
+            var v = inputs[i].GetValue();
+            if(v.magnitude>value.magnitude)
+            {
+                value = v;
+            }
+        }
+        return value;
     }
 }
