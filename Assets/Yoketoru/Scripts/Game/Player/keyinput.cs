@@ -19,6 +19,13 @@ public class KeyInput : IInput
 
     public void Update()
     {
+        inputValue.x = input.GetAxis("Horizontal");
+        inputValue.y = input.GetAxis("Vertical");
+    }
 
+    public void FixedUpdate()
+    {
+        UnityEngine.Debug.Log($"{inputValue.x}");
+        UnityEngine.Debug.Log($"{inputValue.y()}");
     }
 }
